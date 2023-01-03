@@ -1,6 +1,8 @@
 package br.com.alura.dicars.model
 
-class Carro (private val motor: Motor) {
+import javax.inject.Inject
+
+class Carro @Inject constructor(private val motor: Motor) {
     fun darPartida() {
         motor.ligar()
     }

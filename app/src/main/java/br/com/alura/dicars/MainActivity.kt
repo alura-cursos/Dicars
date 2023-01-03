@@ -16,13 +16,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import br.com.alura.dicars.model.Carro
 import br.com.alura.dicars.model.Motor
 import br.com.alura.dicars.ui.theme.DicarsTheme
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @Inject
+    lateinit var carro: Carro
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val motor = Motor()
-        val carro = Carro(motor)
         carro.darPartida()
 
         setContent {
