@@ -18,10 +18,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import br.com.alura.dicars.model.Carro
 import br.com.alura.dicars.ui.theme.DicarsTheme
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +38,10 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     val carroViewModel: CarroViewModel =
-                        viewModel(factory = CarroViewModel.factory)
+                        viewModel()
+
+//                    val carroViewModel = hiltViewModel<CarroViewModel>()
+
                     val state by carroViewModel.uiState.collectAsState()
                     ListaCarros(state)
                 }

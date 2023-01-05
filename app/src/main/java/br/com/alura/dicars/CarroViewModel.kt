@@ -10,12 +10,15 @@ import br.com.alura.dicars.database.DicarsDatabase
 import br.com.alura.dicars.repository.CarroRepository
 import br.com.alura.dicars.webclient.CarroWebClient
 import br.com.alura.dicars.webclient.RetrofitInit
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class CarroViewModel(private val repositorio: CarroRepository) : ViewModel() {
+@HiltViewModel
+class CarroViewModel @Inject constructor(private val repositorio: CarroRepository) : ViewModel() {
     private val _uiState = MutableStateFlow(ListaCarrosUitState())
     val uiState: StateFlow<ListaCarrosUitState>
         get() = _uiState.asStateFlow()
@@ -30,20 +33,6 @@ class CarroViewModel(private val repositorio: CarroRepository) : ViewModel() {
             _uiState.value = _uiState.value.copy(
                 carros = carros
             )
-        }
-    }
-
-    companion object {
-        val factory: ViewModelProvider.Factory = viewModelFactory {
-            initializer {
-                val context =
-                    checkNotNull(this[APPLICATION_KEY] as DicarsApplication).applicationContext
-                val repositorio = CarroRepository(
-                    DicarsDatabase.getDatabase(context).CarroDao(),
-                    CarroWebClient(RetrofitInit().carroService)
-                )
-                CarroViewModel(repositorio)
-            }
         }
     }
 }

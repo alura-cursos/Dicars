@@ -2,8 +2,9 @@ package br.com.alura.dicars.webclient
 
 import br.com.alura.dicars.model.Carro
 import kotlinx.coroutines.flow.first
+import javax.inject.Inject
 
-class CarroWebClient (
+class CarroWebClient @Inject constructor (
     private val carroService: CarroService
 ) {
     suspend fun buscaCarros(): List<Carro> {
