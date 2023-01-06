@@ -17,7 +17,7 @@ Por exemplo, podemos fazer com que o arquivo `DatabaseModule` possua um método 
 Podemos aplicar uma abordagem similar ao arquivo `RetrofitModule`, separando a criação da instância de Retrofit das classes `service`, assim, podemos mover toda implementação de `RetrofitInit` para  dentro do módulo e apagar o arquivo original.
 Você pode conferir um exemplo funcional desses exemplos que comentarmos através [deste commit][hilt-refinado]
 
-[hilt-inicial]: https://github.com/git-jr/Dicars/commits/hilt-inicial
-[hilt-pratico]: https://github.com/git-jr/Dicars/commits/hilt-pratico
-[hilt-refinado]: https://github.com/git-jr/Dicars/commit/2fcf96378c158f10d8226af4ade7240e4ac865b5
+[hilt-inicial]: https://github.com/alura-cursos/Dicars/commits/hilt-inicial
+[hilt-pratico]: https://github.com/alura-cursos/Dicars/commits/hilt-pratico
+[hilt-refinado]: https://github.com/alura-cursos/Dicars/commit/2fcf96378c158f10d8226af4ade7240e4ac865b5
 [singleton-pattern]: https://en.wikipedia.org/wiki/Singleton_pattern
